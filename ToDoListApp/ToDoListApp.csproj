@@ -7,18 +7,17 @@
 
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <ProjectReference Include="..\ToDoListApp.Data\ToDoListApp.Data.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\ToDoListApp.Data\ToDoListApp.Persistence.csproj" />
+    <ProjectReference Include="..\ToDoListApp.Domain\ToDoListApp.Domain.csproj" />
   </ItemGroup>
 
 </Project>

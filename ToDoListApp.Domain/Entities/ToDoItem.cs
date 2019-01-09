@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ToDoListApp.Data.Entities
+namespace ToDoListApp.Domain.Entities
 {
     public class ToDoItem
     {

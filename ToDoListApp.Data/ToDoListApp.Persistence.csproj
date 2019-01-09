@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>ToDoListApp.Persistence</AssemblyName>
+    <RootNamespace>ToDoListApp.Persistence</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +17,10 @@
 
   <ItemGroup>
     <Folder Include="Configurations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoListApp.Domain\ToDoListApp.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

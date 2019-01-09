@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ToDoListApp.Data.Entities;
+using ToDoListApp.Domain.Entities;
 
-namespace ToDoListApp.Data
+namespace ToDoListApp.Persistence
 {
     public class ToDoDbContext : DbContext
     {
