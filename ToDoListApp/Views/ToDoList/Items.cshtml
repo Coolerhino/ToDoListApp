@@ -1,7 +1,22 @@
-﻿@{
+﻿@model ToDoListApp.Application.ToDoItems.Queries.ToDoItemViewModel
+@{
     ViewData["Title"] = "ToDoList";
 }
 
 <h1>ToDoList</h1>
 <ul>
+    @foreach (var item in Model.ToDoItems)
+    {
+        <li>
+            <div>
+                @item.Title
+            </div>
+            <div>
+                @item.Description
+            </div>
+            <div>
+                @item.EstimatedFinish
+            </div>
+        </li>
+    }
 </ul>

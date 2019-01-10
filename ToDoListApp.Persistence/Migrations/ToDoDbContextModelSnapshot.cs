@@ -36,6 +36,32 @@ namespace ToDoListApp.Persistence.Migrations
                     b.HasKey("ToDoItemId");
 
                     b.ToTable("ToDoItems");
+
+                    b.HasData(
+                        new
+                        {
+                            ToDoItemId = 1,
+                            Description = "Lotnisko Warszawa",
+                            Done = false,
+                            EstimatedFinish = new DateTime(2019, 1, 15, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Odebrać Szakala"
+                        },
+                        new
+                        {
+                            ToDoItemId = 2,
+                            Description = "Nowy narybek",
+                            Done = false,
+                            EstimatedFinish = new DateTime(2019, 1, 16, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Ściągnąć młodych wilków"
+                        },
+                        new
+                        {
+                            ToDoItemId = 3,
+                            Description = "Od kochanego Waldka",
+                            Done = false,
+                            EstimatedFinish = new DateTime(2019, 1, 16, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Odebrać złoto z cargo"
+                        });
                 });
 #pragma warning restore 612, 618
         }

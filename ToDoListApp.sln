@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoListApp", "ToDoListApp\ToDoListApp.csproj", "{AD964FD7-FF92-40DC-9367-045CD037A700}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoListApp.Persistence", "ToDoListApp.Data\ToDoListApp.Persistence.csproj", "{93A1F198-1300-4727-AA6C-93E41A910A42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoListApp.Persistence", "ToDoListApp.Persistence\ToDoListApp.Persistence.csproj", "{93A1F198-1300-4727-AA6C-93E41A910A42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListApp.Domain", "ToDoListApp.Domain\ToDoListApp.Domain.csproj", "{7EED8588-CF4D-47D4-86BE-8F86B13188E8}"
 EndProject

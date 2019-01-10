@@ -7,6 +7,7 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="MediatR" Version="6.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -18,8 +19,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ToDoListApp.Application\ToDoListApp.Application.csproj" />
-    <ProjectReference Include="..\ToDoListApp.Data\ToDoListApp.Persistence.csproj" />
     <ProjectReference Include="..\ToDoListApp.Domain\ToDoListApp.Domain.csproj" />
+    <ProjectReference Include="..\ToDoListApp.Persistence\ToDoListApp.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
