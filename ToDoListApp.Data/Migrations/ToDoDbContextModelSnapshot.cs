@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ToDoListApp.Data;
+using ToDoListApp.Persistence;
 
-namespace ToDoListApp.Data.Migrations
+namespace ToDoListApp.Persistence.Migrations
 {
     [DbContext(typeof(ToDoDbContext))]
     partial class ToDoDbContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace ToDoListApp.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ToDoListApp.Data.Entities.ToDoItem", b =>
+            modelBuilder.Entity("ToDoListApp.Domain.Entities.ToDoItem", b =>
                 {
                     b.Property<int>("ToDoItemId")
                         .ValueGeneratedOnAdd()
