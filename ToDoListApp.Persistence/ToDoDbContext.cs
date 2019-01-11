@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using ToDoListApp.Domain.Entities;
+using ToDoListApp.Domain.Enums;
 
 namespace ToDoListApp.Persistence
 {
@@ -20,6 +21,7 @@ namespace ToDoListApp.Persistence
                 Title = "Odebrać Szakala",
                 Description = "Lotnisko Warszawa",
                 EstimatedFinish = new DateTime(2019, 01, 15, 14, 0, 0),
+                Priority = Priority.High
             });
             modelBuilder.Entity<ToDoItem>().HasData(new ToDoItem
             {
@@ -27,6 +29,7 @@ namespace ToDoListApp.Persistence
                 Title = "Ściągnąć młodych wilków",
                 Description = "Nowy narybek",
                 EstimatedFinish = new DateTime(2019, 01, 16, 14, 0, 0),
+                Priority = Priority.Medium
             });
             modelBuilder.Entity<ToDoItem>().HasData(new ToDoItem
             {
@@ -34,6 +37,7 @@ namespace ToDoListApp.Persistence
                 Title = "Odebrać złoto z cargo",
                 Description = "Od kochanego Waldka",
                 EstimatedFinish = new DateTime(2019, 01, 16, 14, 0, 0),
+                Priority = Priority.High
             });
         }
     }

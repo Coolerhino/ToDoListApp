@@ -35,10 +35,10 @@ namespace ToDoListApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]CreateToDoItemCommand command)
+        public async Task<IActionResult> Create(CreateToDoItemCommand command)
         {
             await Mediator.Send(command);
-            return Ok();
+            return View();
         }
     }
 }

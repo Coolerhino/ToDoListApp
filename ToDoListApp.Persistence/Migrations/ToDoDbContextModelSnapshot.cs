@@ -31,6 +31,8 @@ namespace ToDoListApp.Persistence.Migrations
 
                     b.Property<DateTime>("EstimatedFinish");
 
+                    b.Property<int>("Priority");
+
                     b.Property<string>("Title");
 
                     b.HasKey("ToDoItemId");
@@ -44,6 +46,7 @@ namespace ToDoListApp.Persistence.Migrations
                             Description = "Lotnisko Warszawa",
                             Done = false,
                             EstimatedFinish = new DateTime(2019, 1, 15, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Priority = 2,
                             Title = "Odebrać Szakala"
                         },
                         new
@@ -52,6 +55,7 @@ namespace ToDoListApp.Persistence.Migrations
                             Description = "Nowy narybek",
                             Done = false,
                             EstimatedFinish = new DateTime(2019, 1, 16, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Priority = 1,
                             Title = "Ściągnąć młodych wilków"
                         },
                         new
@@ -60,6 +64,7 @@ namespace ToDoListApp.Persistence.Migrations
                             Description = "Od kochanego Waldka",
                             Done = false,
                             EstimatedFinish = new DateTime(2019, 1, 16, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Priority = 2,
                             Title = "Odebrać złoto z cargo"
                         });
                 });
