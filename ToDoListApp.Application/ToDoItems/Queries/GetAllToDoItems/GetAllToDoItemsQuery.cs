@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using MediatR;
-using ToDoListApp.Domain.Entities;
+﻿using MediatR;
 
 namespace ToDoListApp.Application.ToDoItems.Queries
 {
-    public class GetAllToDoItemsQuery : IRequest<ToDoItemViewModel>
+    public class GetAllToDoItemsQuery : IRequest<ToDoItemsViewModel>
     {
         public string SearchTitle { get; set; }
         public string SearchDescription { get; set; }

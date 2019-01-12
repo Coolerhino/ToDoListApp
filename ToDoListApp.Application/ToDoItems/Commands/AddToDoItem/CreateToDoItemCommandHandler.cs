@@ -21,9 +21,9 @@ namespace ToDoListApp.Application.ToDoItems.Commands.AddToDoItem
             {
                 Title = request.Title,
                 Description = request.Description,
-                EstimatedFinish = request.EstimatedDateTime,
+                EstimatedFinish = request.EstimatedFinish,
+                Priority = request.Priority,
                 Done = false,
-                
             };
             _context.ToDoItems.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);

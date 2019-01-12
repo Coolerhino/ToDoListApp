@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ using ToDoListApp.Persistence;
 
 namespace ToDoListApp.Application.ToDoItems.Queries
 {
-    public class GetAllToDoItemsQueryHandler : IRequestHandler<GetAllToDoItemsQuery, ToDoItemViewModel>
+    public class GetAllToDoItemsQueryHandler : IRequestHandler<GetAllToDoItemsQuery, ToDoItemsViewModel>
     {
         private readonly ToDoDbContext _context;
         private readonly IMapper _mapper;
@@ -19,10 +18,10 @@ namespace ToDoListApp.Application.ToDoItems.Queries
             _context = context;
             _mapper = mapper;
         }
-        public async Task<ToDoItemViewModel> Handle(GetAllToDoItemsQuery request, CancellationToken cancellationToken)
+        public async Task<ToDoItemsViewModel> Handle(GetAllToDoItemsQuery request, CancellationToken cancellationToken)
         {
             var toDoItems = await _context.ToDoItems.ToListAsync(cancellationToken);
-            var model = new ToDoItemViewModel
+            var model = new ToDoItemsViewModel
             {
                 ToDoItems = _mapper.Map<IEnumerable<ToDoItem>>(toDoItems)
             };

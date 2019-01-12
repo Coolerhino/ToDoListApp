@@ -11,7 +11,6 @@ namespace ToDoListApp.Application.ToDoItems.Commands.AddToDoItem
         public string EstimatedDate { get; set; }
         public string EstimatedTime { get; set; }
         public Priority Priority { get; set; }
-
-        public DateTime EstimatedDateTime => DateTime.Parse(string.Format("{0} {1}", EstimatedDate, EstimatedTime));
+        public DateTime EstimatedFinish { get; set; }
     }
 }

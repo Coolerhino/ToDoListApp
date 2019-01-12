@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ToDoListApp.Application.ToDoItems.Commands.AddToDoItem;
 using ToDoListApp.Application.ToDoItems.Commands.DeleteToDoItem;
+using ToDoListApp.Application.ToDoItems.Commands.UpdateToDoItem;
 using ToDoListApp.Application.ToDoItems.Queries;
+using ToDoListApp.Application.ToDoItems.Queries.GetToDoItem;
 using ToDoListApp.Domain.Entities;
 
 namespace ToDoListApp.Controllers
@@ -16,7 +16,7 @@ namespace ToDoListApp.Controllers
         public async Task<IActionResult> Items()
         {
             var items = await Mediator.Send(new GetAllToDoItemsQuery());
-                //var vm = new ToDoItemViewModel{ToDoItems = items};
+                //var vm = new ToDoItemsViewModel{ToDoItems = items};
             return View(items);
         }
 
@@ -29,8 +29,6 @@ namespace ToDoListApp.Controllers
 
         public IActionResult Create()
         {
-            //w ogole zrob brzydko podstawowa funkcjonalnosc i potem taski stad przerzucaj tam
-            //todo return form view for creating
             return View();
         }
 
@@ -38,6 +36,18 @@ namespace ToDoListApp.Controllers
         public async Task<IActionResult> Create(CreateToDoItemCommand command)
         {
             await Mediator.Send(command);
+            return View();
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var toDoItem = await Mediator.Send(new GetToDoItemQuery {ToDoItemId = id});
+            return View(toDoItem);
+        }
+        [HttpPut]
+        public async Task<IActionResult> Edit(ToDoItem item)
+        {
+            await Mediator.Send(new UpdateToDoItemCommand{ToDoItem = item});
             return View();
         }
     }

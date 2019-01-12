@@ -4,6 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
+
 <h1>Create a ToDo item</h1>
 <form asp-controller="ToDoList" asp-action="Create" method="post" class="form-group">
     <div class="form-group row">
@@ -22,18 +23,14 @@
     </div>
     <div class="form-group row">
         <label asp-for="Priority" class="col-sm-2 col-form-label"></label>
-        <select asp-for="Priority" asp-items="Html.GetEnumSelectList<Priority>()" class="btn btn-primary dropdown-toggle form-inline"></select>
-    </div>
-    <div class="form-group row">
-        <label asp-for="EstimatedDate" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input type="date" asp-for="EstimatedDate" class="form-control" />
+            <select asp-for="Priority" asp-items="Html.GetEnumSelectList<Priority>()" class="btn btn-primary dropdown-toggle form-inline"></select>
         </div>
     </div>
     <div class="form-group row">
-        <label asp-for="EstimatedTime" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input type="time" asp-for="EstimatedDate" class="form-control" />
+        <label asp-for="EstimatedFinish" class="col-sm-2 col-form-label">Estimated finish date</label>
+        <div class="input-group col-sm-10 date">
+            <input asp-for="EstimatedFinish" type="datetime" class="form-control datetimepicker-input" id="datetimepicker5" data-toggle="datetimepicker" data-target="#datetimepicker5" />
         </div>
     </div>
     <div class="form-group row">

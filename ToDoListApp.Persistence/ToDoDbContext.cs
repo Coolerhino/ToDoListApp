@@ -15,6 +15,7 @@ namespace ToDoListApp.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<ToDoItem>().HasData(new ToDoItem
             {
                 ToDoItemId = 1,
