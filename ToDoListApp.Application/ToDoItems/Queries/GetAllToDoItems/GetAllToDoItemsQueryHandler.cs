@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,7 +22,32 @@ namespace ToDoListApp.Application.ToDoItems.Queries
         }
         public async Task<ToDoItemsViewModel> Handle(GetAllToDoItemsQuery request, CancellationToken cancellationToken)
         {
-            var toDoItems = await _context.ToDoItems.ToListAsync(cancellationToken);
+
+            var toDoItems = _context.ToDoItems.Select(x => x);
+            if (!string.IsNullOrWhiteSpace(request.SearchTitle))
+            {
+                toDoItems = toDoItems.Where(x => x.Title.Contains(request.SearchTitle));
+            }
+            if (!string.IsNullOrWhiteSpace(request.SearchDescription))
+            {
+                toDoItems = toDoItems.Where(x => x.Title.Contains(request.SearchDescription));
+            }
+            switch (request.DoneStatus)
+            {
+                case DoneStatus.Pending:
+                    toDoItems = toDoItems
+                        .Where(x => !x.Done)
+                        .OrderByDescending(x => x.Priority);
+                    break;
+                case DoneStatus.Done:
+                    toDoItems = toDoItems
+                        .Where(x => x.Done)
+                        .OrderByDescending(x => x.Priority);
+                    break;
+                case DoneStatus.All:
+                    break;
+            }
+
             var model = new ToDoItemsViewModel
             {
                 ToDoItems = _mapper.Map<IEnumerable<ToDoItem>>(toDoItems)

@@ -15,6 +15,7 @@ $(function () {
         clear: 'fas fa-trash-alt',
         close: 'fas fa-times'
     };
-    //$('#datetimepicker5').datetimepicker({ 'format': "DD-MM-YYYY HH:mm" });
+    $('#datetimepicker5').datetimepicker({ 'format': "DD-MM-YYYY HH:mm" });
     $('#datetimepicker5').datetimepicker();
+
 });

@@ -6,5 +6,6 @@ namespace ToDoListApp.Application.ToDoItems.Queries
     public class ToDoItemsViewModel
     {
         public IEnumerable<ToDoItem> ToDoItems { get; set; }
+        public GetAllToDoItemsQuery Query { get; set; } = new GetAllToDoItemsQuery();
     }
 }

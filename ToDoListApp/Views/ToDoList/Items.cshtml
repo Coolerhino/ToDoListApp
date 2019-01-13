@@ -1,17 +1,24 @@
-﻿@model ToDoListApp.Application.ToDoItems.Queries.ToDoItemsViewModel
+﻿@using ToDoListApp.Application.ToDoItems.Queries
+@model ToDoListApp.Application.ToDoItems.Queries.ToDoItemsViewModel
 @{
     ViewData["Title"] = "ToDoList";
 }
 
 <h1>ToDoList</h1>
-<div class="form-group row">
-    <div class="col-sm-4">
-        <input class="form-control" placeholder="Search for title"/>
+<form asp-controller="ToDoList" asp-action="Items" method="get" class="form-group">
+    <div class="form-group row">
+        <div class="col-sm-3">
+            <input asp-for="Query.SearchTitle" class="form-control" placeholder="Search for title" />
+        </div>
+        <div class="col-sm-3">
+            <input asp-for="Query.SearchDescription" class="form-control" placeholder="Search for description" />
+        </div>
+        <div class="col-sm-3">
+            <select asp-for="Query.DoneStatus" asp-items="Html.GetEnumSelectList<DoneStatus>()" class="btn btn-primary dropdown-toggle form-inline"></select>
+            <input type="submit" value="Filter" class="btn btn-primary" />
+        </div>
     </div>
-    <div class="col-sm-4">
-        <input class="form-control" placeholder="Search for description"/>
-    </div>
-</div>
+</form>
 <div>
     <ul >
         @foreach (var item in Model.ToDoItems)

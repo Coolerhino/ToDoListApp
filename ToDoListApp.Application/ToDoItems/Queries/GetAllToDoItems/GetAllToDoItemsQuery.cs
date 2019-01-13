@@ -6,6 +6,7 @@ namespace ToDoListApp.Application.ToDoItems.Queries
     {
         public string SearchTitle { get; set; }
         public string SearchDescription { get; set; }
-        public int? Page { get; set; }
+        public string SortOrder { get; set; }
+        public DoneStatus DoneStatus { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace ToDoListApp.Controllers
 {
     public class ToDoListController : BaseMediatrController
     {
-        [HttpGet]
+
         public async Task<IActionResult> Items()
         {
             var items = await Mediator.Send(new GetAllToDoItemsQuery());
@@ -21,12 +21,20 @@ namespace ToDoListApp.Controllers
             return View(items);
         }
 
-/*        [HttpGet]
-        public async Task<IActionResult> Item(int itemId)
+        [HttpGet]
+        public async Task<IActionResult> Items(GetAllToDoItemsQuery query)
         {
-            var item = await Mediator.Send(new GetToDoItemQuery { ToDoItemId = itemId });
-            return View(item);
-        }*/
+            var items = await Mediator.Send(query);
+            //var vm = new ToDoItemsViewModel{ToDoItems = items};
+            return View(items);
+        }
+
+        /*        [HttpGet]
+                public async Task<IActionResult> Item(int itemId)
+                {
+                    var item = await Mediator.Send(new GetToDoItemQuery { ToDoItemId = itemId });
+                    return View(item);
+                }*/
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
