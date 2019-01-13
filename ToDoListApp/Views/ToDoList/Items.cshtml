@@ -4,19 +4,67 @@
 }
 
 <h1>ToDoList</h1>
-<ul>
-    @foreach (var item in Model.ToDoItems)
-    {
-        <li>
-            <div>
-                @item.Title
-            </div>
-            <div>
-                @item.Description
-            </div>
-            <div>
-                @item.EstimatedFinish
-            </div>
-        </li>
-    }
-</ul>
+<div class="form-group row">
+    <div class="col-sm-4">
+        <input class="form-control" placeholder="Search for title"/>
+    </div>
+    <div class="col-sm-4">
+        <input class="form-control" placeholder="Search for description"/>
+    </div>
+</div>
+<div>
+    <ul >
+        @foreach (var item in Model.ToDoItems)
+        {
+            <li>
+                <div class="details">
+                    <span class="title">@item.Title</span>
+                    <span class="description">@item.Description</span>
+                    <span>@item.EstimatedFinish</span>
+                    <a asp-controller="ToDoList" asp-action="Edit" method="get" asp-route-id="@item.ToDoItemId" class="btn btn-sm btn-info fa fa-edit"></a>
+                    <button data-item-id="@item.ToDoItemId" class="btn btn-sm pull-right @(item.Done ? "btn-dark js-toggle-uncheck" : "btn-light js-toggle-check")">@(item.Done ? "Mark undone" : "Mark done")</button>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-check").click(function (e) {
+                var button = $(e.target);
+                $.post("/todolist/toggledone/", { id: button.attr("data-item-id") })
+                    .done(function () {
+                        button
+                            .removeClass("js-toggle-check")
+                            .addClass("js-toggle-uncheck")
+                            .removeClass("btn-light")
+                            .addClass("btn-dark")
+                            .text("Mark undone");
+                        location.reload();
+                    })
+                    .fail(function() {
+                        alert("Something failed!");
+                    });
+            });
+            $(".js-toggle-uncheck").click(function (e) {
+                var button = $(e.target);
+                $.post("/todolist/toggledone/", { id: button.attr("data-item-id") })
+                    .done(function () {
+                        button
+                            .removeClass("js-toggle-uncheck")
+                            .addClass("js-toggle-check")
+                            .removeClass("btn-dark")
+                            .addClass("btn-light")
+                            .text("Mark done");
+                        location.reload();
+                    })
+                    .fail(function() {
+                        alert("Something failed!");
+                    });
+            });
+        });
+    </script>
+}

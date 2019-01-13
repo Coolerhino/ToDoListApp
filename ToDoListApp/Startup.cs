@@ -33,7 +33,7 @@ namespace ToDoListApp
             });
 
             services.AddAutoMapper();
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMediatR(typeof(GetAllToDoItemsQueryHandler).GetTypeInfo().Assembly); //todo add assembly of application layer - one that is using mediatr in cq
             services.AddDbContext<ToDoDbContext>(config => {
@@ -58,6 +58,7 @@ namespace ToDoListApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
 
             app.UseMvc(routes =>
             {
