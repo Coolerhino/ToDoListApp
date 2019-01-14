@@ -53,8 +53,13 @@ namespace ToDoListApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateToDoItemCommand command)
         {
-            await Mediator.Send(command);
-            return View();
+            if (ModelState.IsValid)
+            {
+                await Mediator.Send(command);
+                return View("Items");
+            }
+
+            return View("Create", command);
         }
 
         public async Task<IActionResult> Edit(int id)

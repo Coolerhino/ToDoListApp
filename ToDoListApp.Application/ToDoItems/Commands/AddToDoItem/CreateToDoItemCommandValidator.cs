@@ -11,7 +11,7 @@ namespace ToDoListApp.Application.ToDoItems.Commands.AddToDoItem
             RuleFor(x => x.Title).MaximumLength(50).NotEmpty();
             RuleFor(x => x.Priority).IsInEnum();
             RuleFor(x => x.Description).MaximumLength(200);
-            RuleFor(x => x.EstimatedFinish).GreaterThan(DateTime.Now);
+            RuleFor(x => x.EstimatedFinish).GreaterThan(DateTime.Now).NotEmpty();
         }
     }
 }
