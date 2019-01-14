@@ -25,6 +25,6 @@ Follow these steps to get your development environment set up:
 	  dotnet run
 	   ```
 
-Or just simply launch kestrel within visual studio
+Or just simply open the solution and launch kestrel within visual studio
 
 [![launch.png](https://i.postimg.cc/FKxs6Zjq/launch.png)](https://postimg.cc/7CfkGStM)
