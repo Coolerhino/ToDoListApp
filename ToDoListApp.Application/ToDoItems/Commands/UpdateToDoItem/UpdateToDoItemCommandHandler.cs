@@ -23,7 +23,6 @@ namespace ToDoListApp.Application.ToDoItems.Commands.UpdateToDoItem
             {
                 throw new NotFoundException(nameof(ToDoItem), request.ToDoItemId);
             }
-            //use automapper here
             entity.Title = request.ToDoItem.Title;
             entity.Description = request.ToDoItem.Description;
             entity.EstimatedFinish = request.ToDoItem.EstimatedFinish;

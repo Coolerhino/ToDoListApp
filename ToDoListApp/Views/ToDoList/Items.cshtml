@@ -1,4 +1,8 @@
-﻿@using ToDoListApp.Application.ToDoItems.Queries
+﻿@using X.PagedList.Mvc;
+@using X.PagedList; 
+@using ToDoListApp.Application.ToDoItems.Queries
+@using X.PagedList.Mvc.Common
+@using X.PagedList.Mvc.Core
 @model ToDoListApp.Application.ToDoItems.Queries.ToDoItemsViewModel
 @{
     ViewData["Title"] = "ToDoList";
@@ -21,7 +25,7 @@
 </form>
 <div>
 
-    @foreach (var item in Model.ToDoItems)
+    @foreach (var item in ViewBag.ItemsPage)
     {
         <div class="card mt-3">
             <div class="card-body">
@@ -37,6 +41,11 @@
             </div>
         </div>
     }
+    
+    @Html.PagedListPager((IPagedList)ViewBag.ItemsPage, page => Url.Action("Items", new { page, Model.Query.DoneStatus }),
+        new PagedListRenderOptions {
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" }})
 
 </div>
 

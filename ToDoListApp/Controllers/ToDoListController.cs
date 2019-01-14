@@ -8,24 +8,27 @@ using ToDoListApp.Application.ToDoItems.Commands.UpdateToDoItem;
 using ToDoListApp.Application.ToDoItems.Queries;
 using ToDoListApp.Application.ToDoItems.Queries.GetToDoItem;
 using ToDoListApp.Domain.Entities;
+using X.PagedList;
 
 namespace ToDoListApp.Controllers
 {
     public class ToDoListController : BaseMediatrController
     {
 
-        public async Task<IActionResult> Items()
+        public async Task<IActionResult> Items(int page = 1)
         {
             var items = await Mediator.Send(new GetAllToDoItemsQuery());
-            //var vm = new ToDoItemsViewModel{ToDoItems = items};
+            var pagedItems = items.ToDoItems.ToPagedList(page, 6);
+            ViewBag.ItemsPage = pagedItems;
             return View(items);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Items(GetAllToDoItemsQuery query)
+        public async Task<IActionResult> Items(GetAllToDoItemsQuery query, int page = 1)
         {
             var items = await Mediator.Send(query);
-            //var vm = new ToDoItemsViewModel{ToDoItems = items};
+            var pagedItems = items.ToDoItems.ToPagedList(page, 6);
+            ViewBag.ItemsPage = pagedItems;
             return View(items);
         }
 
