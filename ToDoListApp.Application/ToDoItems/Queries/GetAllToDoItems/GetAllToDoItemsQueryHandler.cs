@@ -36,21 +36,20 @@ namespace ToDoListApp.Application.ToDoItems.Queries
             {
                 case DoneStatus.Pending:
                     toDoItems = toDoItems
-                        .Where(x => !x.Done)
-                        .OrderByDescending(x => x.Priority);
+                        .Where(x => !x.Done);
                     break;
                 case DoneStatus.Done:
                     toDoItems = toDoItems
-                        .Where(x => x.Done)
-                        .OrderByDescending(x => x.Priority);
+                        .Where(x => x.Done);
                     break;
                 case DoneStatus.All:
                     break;
             }
 
+            toDoItems = toDoItems.OrderByDescending(x => x.Priority);
             var model = new ToDoItemsViewModel
             {
-                ToDoItems = _mapper.Map<IEnumerable<ToDoItem>>(toDoItems)
+                ToDoItems = _mapper.Map<IEnumerable<ToDoItem>>(await toDoItems.ToListAsync(cancellationToken))
             };
             return model;
         }

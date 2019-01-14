@@ -36,11 +36,10 @@ namespace ToDoListApp.Controllers
                     return View(item);
                 }*/
 
-        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await Mediator.Send(new DeleteToDoItemCommand { Id = id });
-            return View("Items");
+            return View("Items", await Mediator.Send(new GetAllToDoItemsQuery()));
         }
 
         public IActionResult Create()
@@ -60,11 +59,12 @@ namespace ToDoListApp.Controllers
             var toDoItem = await Mediator.Send(new GetToDoItemQuery { ToDoItemId = id });
             return View(toDoItem);
         }
-        [HttpPut]
-        public async Task<IActionResult> Edit(int id, [FromQuery]ToDoItem item)
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, ToDoItem item)
         {
+            item.ToDoItemId = id;
             await Mediator.Send(new UpdateToDoItemCommand { ToDoItem = item });
-            return View("Items");
+            return View("Items", await Mediator.Send(new GetAllToDoItemsQuery()));
         }
 
         [HttpPost]

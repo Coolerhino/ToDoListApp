@@ -32,7 +32,7 @@
                 <div class="card-footer">
                     <button data-item-id="@item.ToDoItemId" class="btn fa-check-square pull-right @(item.Done ? "btn-success fas js-toggle-uncheck" : "btn-secondary far js-toggle-check")"></button>
                     <a asp-controller="ToDoList" asp-action="Edit" method="get" asp-route-id="@item.ToDoItemId" class="btn btn-info fa fa-edit"></a>
-                    <button asp-controller="ToDoList" asp-action="Delete" asp-route-id="@item.ToDoItemId" class="btn btn-danger fa fa-trash"></button>
+                    <a asp-controller="ToDoList" asp-action="Delete" asp-route-id="@item.ToDoItemId" class="btn btn-danger fa fa-trash"></a>
                 </div>
             </div>
         </div>

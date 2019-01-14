@@ -3,10 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToDoListApp.Data.Migrations
 {
-    public partial class ProjectTasks : Migration
+    public partial class NewSeed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<int>(
+                name: "Priority",
+                table: "ToDoItems",
+                nullable: false,
+                defaultValue: 0);
+
             migrationBuilder.UpdateData(
                 table: "ToDoItems",
                 keyColumn: "ToDoItemId",
@@ -17,16 +23,9 @@ namespace ToDoListApp.Data.Migrations
             migrationBuilder.UpdateData(
                 table: "ToDoItems",
                 keyColumn: "ToDoItemId",
-                keyValue: 2,
-                column: "Priority",
-                value: 0);
-
-            migrationBuilder.UpdateData(
-                table: "ToDoItems",
-                keyColumn: "ToDoItemId",
                 keyValue: 3,
-                columns: new[] { "EstimatedFinish", "Priority" },
-                values: new object[] { new DateTime(2019, 1, 8, 20, 0, 0, 0, DateTimeKind.Unspecified), 0 });
+                column: "EstimatedFinish",
+                value: new DateTime(2019, 1, 8, 20, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.InsertData(
                 table: "ToDoItems",
@@ -80,26 +79,16 @@ namespace ToDoListApp.Data.Migrations
                 keyColumn: "ToDoItemId",
                 keyValue: 10);
 
-            migrationBuilder.UpdateData(
-                table: "ToDoItems",
-                keyColumn: "ToDoItemId",
-                keyValue: 1,
-                column: "Priority",
-                value: 2);
-
-            migrationBuilder.UpdateData(
-                table: "ToDoItems",
-                keyColumn: "ToDoItemId",
-                keyValue: 2,
-                column: "Priority",
-                value: 1);
+            migrationBuilder.DropColumn(
+                name: "Priority",
+                table: "ToDoItems");
 
             migrationBuilder.UpdateData(
                 table: "ToDoItems",
                 keyColumn: "ToDoItemId",
                 keyValue: 3,
-                columns: new[] { "EstimatedFinish", "Priority" },
-                values: new object[] { new DateTime(2019, 1, 16, 14, 0, 0, 0, DateTimeKind.Unspecified), 2 });
+                column: "EstimatedFinish",
+                value: new DateTime(2019, 1, 16, 14, 0, 0, 0, DateTimeKind.Unspecified));
         }
     }
 }

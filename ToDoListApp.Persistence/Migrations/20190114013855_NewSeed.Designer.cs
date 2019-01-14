@@ -10,8 +10,8 @@ using ToDoListApp.Persistence;
 namespace ToDoListApp.Data.Migrations
 {
     [DbContext(typeof(ToDoDbContext))]
-    [Migration("20190114002802_ProjectTasks")]
-    partial class ProjectTasks
+    [Migration("20190114013855_NewSeed")]
+    partial class NewSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

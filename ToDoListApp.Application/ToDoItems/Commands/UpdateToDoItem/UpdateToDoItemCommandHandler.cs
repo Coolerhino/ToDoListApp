@@ -18,17 +18,17 @@ namespace ToDoListApp.Application.ToDoItems.Commands.UpdateToDoItem
 
         public async Task<Unit> Handle(UpdateToDoItemCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.ToDoItems.FindAsync(request.ToDoItemId);
+            var entity = await _context.ToDoItems.FindAsync(request.ToDoItem.ToDoItemId);
             if (entity == null)
             {
                 throw new NotFoundException(nameof(ToDoItem), request.ToDoItemId);
             }
             //use automapper here
-            entity.Title = request.Title;
-            entity.Description = request.Description;
-            entity.EstimatedFinish = request.EstimatedFinish;
-            entity.Done = request.Done;
-            entity.Priority = request.Priority;
+            entity.Title = request.ToDoItem.Title;
+            entity.Description = request.ToDoItem.Description;
+            entity.EstimatedFinish = request.ToDoItem.EstimatedFinish;
+            entity.Done = request.ToDoItem.Done;
+            entity.Priority = request.ToDoItem.Priority;
 
             await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;

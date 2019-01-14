@@ -15,7 +15,6 @@ namespace ToDoListApp.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
             modelBuilder.Entity<ToDoItem>().HasData(new ToDoItem
             {
                 ToDoItemId = 1,
@@ -103,6 +102,9 @@ namespace ToDoListApp.Persistence
                 Priority = Priority.High,
                 Done = true
             });
+            modelBuilder.Entity<ToDoItem>().HasKey(i => i.ToDoItemId);
+            modelBuilder.Entity<ToDoItem>().Property(x => x.Title).HasMaxLength(50).IsRequired();
+            modelBuilder.Entity<ToDoItem>().Property(x => x.Description).HasMaxLength(200);
         }
     }
 }

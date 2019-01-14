@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ToDoListApp.Application.ToDoItems.Commands.AddToDoItem;
 using ToDoListApp.Application.ToDoItems.Queries;
 using ToDoListApp.Persistence;
 
@@ -34,7 +36,9 @@ namespace ToDoListApp
 
             services.AddAutoMapper();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateToDoItemCommandValidator>());
             services.AddMediatR(typeof(GetAllToDoItemsQueryHandler).GetTypeInfo().Assembly); //todo add assembly of application layer - one that is using mediatr in cq
             services.AddDbContext<ToDoDbContext>(config => {
                 config.UseSqlServer(Configuration.GetConnectionString("ToDoAppDatabase"), b => b.MigrationsAssembly("ToDoListApp.Persistence"));
