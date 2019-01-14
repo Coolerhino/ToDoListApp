@@ -40,7 +40,7 @@ namespace ToDoListApp.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await Mediator.Send(new DeleteToDoItemCommand { Id = id });
-            return Ok();
+            return View("Items");
         }
 
         public IActionResult Create()
@@ -64,7 +64,7 @@ namespace ToDoListApp.Controllers
         public async Task<IActionResult> Edit(int id, [FromQuery]ToDoItem item)
         {
             await Mediator.Send(new UpdateToDoItemCommand { ToDoItem = item });
-            return View();
+            return View("Items");
         }
 
         [HttpPost]

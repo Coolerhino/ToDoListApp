@@ -17,5 +17,4 @@ $(function () {
     };
     $('#datetimepicker5').datetimepicker({ 'format': "DD-MM-YYYY HH:mm" });
     $('#datetimepicker5').datetimepicker();
-
 });

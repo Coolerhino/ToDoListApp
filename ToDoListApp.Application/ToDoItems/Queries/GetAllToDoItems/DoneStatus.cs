@@ -2,8 +2,8 @@
 {
     public enum DoneStatus
     {
-        All,
+        Pending,
         Done,
-        Pending
+        All
     }
 }
