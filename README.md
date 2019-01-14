@@ -28,3 +28,9 @@ Follow these steps to get your development environment set up:
 Or just simply open the solution and launch kestrel within visual studio
 
 [![launch.png](https://i.postimg.cc/FKxs6Zjq/launch.png)](https://postimg.cc/7CfkGStM)
+
+Database should be already updated to use existing migrations, but if it isn't, 
+```
+Database-Update
+```
+in package manager console. But it shouldn't
