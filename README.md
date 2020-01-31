@@ -1,5 +1,5 @@
 # ToDoListApp
-for JMMJ recruitment
+app
 
 ## Getting Started
 ### Prerequisites
